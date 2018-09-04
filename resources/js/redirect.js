@@ -58,30 +58,15 @@
             * But if you want to aggregate arguments to the store, you can use the "fallback" argument for that, and supply a Store url. 
             * QueryString arguments will be automatically aggregated.
             */
-
             
-            var openUrlScheme = function(nativeSchemaUrl){
-                var iframe = document.createElement("iframe");
-
-                iframe.style.border = "none";
-                iframe.style.width = "1px";
-                iframe.style.height = "1px";
-                iframe.onload = function () {
-                    document.location = alt;
-                };
-                iframe.src = nativeSchemaUrl; //iOS app schema url
-                document.body.appendChild(iframe);
-
-            }
             var tryToOpenInMultiplePhases = function(urls) {
 
                 browserMovedToBackground = false;
 
                 var currentIndex = 0;
                 var redirectTime = new Date();
-                // window.location = urls[currentIndex++];
-                openUrlScheme(urls[currentIndex++]);
-
+                window.location = urls[currentIndex++];
+                
                 var next = function () {
                     if (urls.length > currentIndex) {
                         setTimeout(function () {
